@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Cridem a l'endpoint de l'API fent un fetch
-    ______________________________________________
+    fetch()
         .then(response => {
             if (!response.ok) {
                 throw new Error("Error a la resposta del servidor");
