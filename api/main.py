@@ -1,4 +1,4 @@
-from fastapi import FastAPI,HTTPException
+from fastapi import FastAPI,HTTPException, File, UploadFile
 from typing import List
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,32 +23,32 @@ class tablaAlumne(BaseModel):
     cicle: str
     curs: str
     grup: str
-
-class alumnes(BaseModel):    
-    IdAula: int
-    nomAlumne: str
-    cicle: str
-    curs: str
-    grup:  str
+    descAula: str
 
 
 @app.get("/")
 def read_root():
-    return {"Students API"}
+    return {"message": "Students API"}
 
 
-@app.get("/alumne/list", response_model=List[tablaAlumne])  
+@app.get("/alumnes/llista")
 def read_alumnes():
+    alumnes_list = db_alumne.read()
+    return alumne.alumnes_schema(alumnes_list)
+
+
+@app.get("/alumnes/list", response_model=List[tablaAlumne])
+def read_alumnes(orderby: str | None = None,  contain: str | None = None, skip: int = 0, limit: int | None = None ):
     
-    pdb = db_alumne.read()
+    alumnes_list = db_alumne.read(orderby=orderby, contain=contain, skip=skip, limit=limit)
 
-    alumnes_sch = alumne.alumnes_schema(pdb)
+    if not alumnes_list:
+        raise HTTPException(status_code=404, detail="No s'han trobat alumnes")
+    return alumne.alumnes_schema(alumnes_list)
 
-    return alumnes_sch
-
-    return alumne.alumnes_schema(db_alumne.read())
-
-
-
+@app.post("/alumne/loadAlumnes")
+async def load_alumnes(file: UploadFile = File(...)):
+    resultat = db_alumne.alumnesCSV(file)   
+    return resultat
 
 
