@@ -5,8 +5,8 @@
 
 # Comprovació /alumnes/list  (ascendent)
 
-<img src= fotos/listAlumnesAsc.png width="500" height="500">
-<img src= fotos/listAlumnesAsc2.png width="500" height="500">
+<img src= fotos/listAlumnesAsc.png width="650" height="500">
+<img src= fotos/listAlumnesAsc2.png width="650" height="500">
 
 # Comprovació /alumnes/list  (contain)
 
