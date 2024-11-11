@@ -1,6 +1,6 @@
 # Comprovació /alumnes/llista
 
-<img src= fotos/listAlumnesNormal.png width="750" height="500">
+<img src= fotos/listAlumnesNormal.png width="600" height="500">
 
 
 # Comprovació /alumnes/list  (ascendent)
