@@ -1,3 +1,3 @@
 # Comprovació /alumnes/llista
 
-<img src= fotos/llistaAlumnes.png width="500" height="500">
+<img src= fotos/listAlumnes.png width="500" height="500">
